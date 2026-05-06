@@ -276,8 +276,19 @@ openPayment.onclick = ()=>{
   },3000);
 }
 completePurchase.onclick = () => {
-  window.location.href = "https://app.quorapay.online/pay/f185d332-b6a4-42e1-ba17-25323e3a7b4c";
-};
+  const checkoutUrl = "https://app.quorapay.online/pay/f185d332-b6a4-42e1-ba17-25323e3a7b4c";
+  
+  // Pega todos os parâmetros que estão na sua URL (os ?utm_source=...)
+  const params = window.location.search;
+
+  if (params) {
+    // Se houver parâmetros, ele junta com o link do checkout
+    // O resultando será: link.com/pay/abc?utm_source=...
+    window.location.href = checkoutUrl + params;
+  } else {
+    // Se não houver nada na URL, ele apenas segue o fluxo
+    window.location.href = checkoutUrl;
+  }
 </script>
 
 </body>
