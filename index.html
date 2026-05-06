@@ -268,27 +268,29 @@ openPayment.onclick = ()=>{
 
     orderReview.style.display="block";
 
-    // MOSTRAR BOTÃO FINAL
+// MOSTRAR BOTÃO FINAL
     completePurchase.style.display = "block";
 
     orderReview.scrollIntoView({behavior:"smooth"});
 
-  },3000);
-}
+  }, 3000); // Fim do setTimeout
+}; // FIM da função openPayment.onclick (A CHAVE QUE FALTOU)
+
+// FUNÇÃO DO BOTÃO DE PAGAMENTO COM REPASSE DE UTMs
 completePurchase.onclick = () => {
   const checkoutUrl = "https://app.quorapay.online/pay/f185d332-b6a4-42e1-ba17-25323e3a7b4c";
   
-  // Pega todos os parâmetros que estão na sua URL (os ?utm_source=...)
+  // Pega todos os parâmetros que estão na sua URL atual (os ?utm_source=...)
   const params = window.location.search;
 
   if (params) {
     // Se houver parâmetros, ele junta com o link do checkout
-    // O resultando será: link.com/pay/abc?utm_source=...
     window.location.href = checkoutUrl + params;
   } else {
-    // Se não houver nada na URL, ele apenas segue o fluxo
+    // Se não houver nada na URL, ele apenas segue o fluxo original
     window.location.href = checkoutUrl;
   }
+};
 </script>
 
 </body>
